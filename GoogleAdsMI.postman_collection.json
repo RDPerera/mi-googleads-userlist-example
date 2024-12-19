@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "056ae405-dc3c-4d9e-9b6b-8da2bbe45089",
+		"name": "GoogleAdsMI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28125774"
+	},
+	"item": [
+		{
+			"name": "Get Campaigns",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8290/campaign"
+			},
+			"response": []
+		},
+		{
+			"name": "Query",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\":\"SELECT user_list.id, user_list.name, user_list.membership_life_span FROM user_list\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8290/query"
+			},
+			"response": []
+		},
+		{
+			"name": "Create UserList",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"WSO2List\",\n    \"description\":\"Sample One\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8290/userlist"
+			},
+			"response": []
+		},
+		{
+			"name": "Get UserLists",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8290/userlist"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Users to UserList JSON",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userListId\": \"8895188292\",\n    \"userList\": [\n        {\n            \"email\": \"dilan@wso2.com\"\n        },\n        {\n            \"phoneNumber\": \"+94712479175\"\n        },\n        {\n            \"mobileId\": \"9090\"\n        },\n        {\n            \"thirdPartyUserId\":\"234234\"\n        },\n        {\n            \"addressInfo\": {\n                \"firstName\":\"Dilan\",\n                \"lastName\":\"Perera\",\n                \"city\":\"Colombo\",\n                \"state\":\"CA\",\n                \"countryCode\":\"SL\",\n                \"postalCode\":\"12490\",\n                \"streetAddress\":\"MendisWedaRd\"\n            }\n        },\n        {\n            \"phoneNumber_1\":\"0712456791\"\n        },\n        {\n            \"PhOne Number\":\"0772345164\"\n        },\n        {\n            \"email_1_1_1\":\"arunan@wso2.com\"\n        },\n        {\n            \"Email\":\"chamath@abc.com\",\n            \"Phone\":\"0893425678\",\n            \"First Name\":\"Chamath\",\n            \"Last Name\":\"Perera\",\n            \"Country\":\"Colombo\",\n            \"Zip\":\"12490\"\n        },\n        {\n            \"Email\":\"chamath@abc.com\",\n            \"Phone\":\"0893425678\",\n            \"First Name\":\"Chamath\",\n            \"Last Name\":\"Perera\",\n            \"Country\":\"Colombo\",\n            \"Zip\":\"12490\",\n            \"Email_1\":\"chamath2@abc.com\",\n            \"Phone_1\":\"0893425679\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8290/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Users from UserList",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userListId\": \"8895188292\",\n    \"userList\": [\n        {\n            \"email\": \"dilan@wso2.com\"\n        },\n        {\n            \"phoneNumber\": \"+94712479175\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8290/users"
+			},
+			"response": []
+		},
+		{
+			"name": "GetCustomers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8290/customers"
+			},
+			"response": []
+		},
+		{
+			"name": "Remove UserList",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":\"WSO2List\",\n    \"cusid\":\"Sample One\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8290/userlist"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Users to UserList CSV",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Email,First Name,Last Name,Country,Zip,Phone\ntest@gmail.com,john,smith,us,,1-800-888-8888\ntest2@gmail.com,joanna,smith,cn,101300,1-800-888-8888\ntest4@gmail.com,zoë,pérez,sg,WC2H 8LG,18008888899",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": "http://localhost:8290/usersbycsv"
+			},
+			"response": []
+		},
+		{
+			"name": "CSVtoJSON",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Email,First Name,Last Name,Country,Zip,Phone\ntest@gmail.com,john,smith,us,,1-800-888-8888\ntest2@gmail.com,joanna,smith,cn,101300,1-800-888-8888\ntest4@gmail.com,zoë,pérez,sg,WC2H 8LG,18008888899",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": "http://localhost:8290/csvtojson"
+			},
+			"response": []
+		},
+		{
+			"name": "AAA Sample",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userListId\": \"8895188292\",\n    \"userList\": [\n        {\n            \"email\": \"dilan@wso2.com\"\n        },\n        {\n            \"phoneNumber\": \"+94712479175\"\n        },\n        {\n            \"mobileId\": \"9090\"\n        },\n        {\n            \"thirdPartyUserId\":\"234234\"\n        },\n        {\n            \"addressInfo\": {\n                \"firstName\":\"Dilan\",\n                \"lastName\":\"Perera\",\n                \"city\":\"Colombo\",\n                \"state\":\"CA\",\n                \"countryCode\":\"SL\",\n                \"postalCode\":\"12490\",\n                \"streetAddress\":\"MendisWedaRd\"\n            }\n        },\n        {\n            \"phoneNumber_1\":\"0712456791\"\n        },\n        {\n            \"PhOne Number\":\"0772345164\"\n        },\n        {\n            \"email_1_1_1\":\"arunan@wso2.com\"\n        },\n        {\n            \"Email\":\"chamath@abc.com\",\n            \"Phone\":\"0893425678\",\n            \"First Name\":\"Chamath\",\n            \"Last Name\":\"Perera\",\n            \"Country\":\"Colombo\",\n            \"Zip\":\"12490\"\n        },\n        {\n            \"Email\":\"chamath@abc.com\",\n            \"Phone\":\"0893425678\",\n            \"First Name\":\"Chamath\",\n            \"Last Name\":\"Perera\",\n            \"Country\":\"Colombo\",\n            \"Zip\":\"12490\",\n            \"Email_1\":\"chamath2@abc.com\",\n            \"Phone_1\":\"0893425679\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8290/aaa"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Users to UserList CSV File",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
