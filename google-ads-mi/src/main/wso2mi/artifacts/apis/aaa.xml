@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/aaa" name="aaa" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/">
+        <inSequence>
+
+            <property name="userData" scope="default" type="STRING"
+                expression="json-eval($.userList)" />
+
+            <googleAds.getUserLists configKey="WSO2 GoogleAds">
+                <customerId>3795013886</customerId>
+                <userListName>{json-eval($.userListName)}</userListName>
+            </googleAds.getUserLists>
+
+            <googleAds.uploadUserData configKey="WSO2 GoogleAds">
+                <dataSourceType>From a JSON array</dataSourceType>
+                <jsonArrayContent>{$ctx:userData}</jsonArrayContent>
+                <operationType>create</operationType>
+                <userIdentifierSource>UNSPECIFIED</userIdentifierSource>
+                <customerId>3795013886</customerId>
+                <userListId>{json-eval($.results[0].userList.id)}</userListId>
+            </googleAds.uploadUserData>
+            <respond />
+        </inSequence>
+        <faultSequence>
+        </faultSequence>
+    </resource>
+</api>

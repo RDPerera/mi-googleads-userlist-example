@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localEntry key="WSO2 Local Connection " xmlns="http://ws.apache.org/ns/synapse">
+  <file.init>
+    <connectionType>LOCAL</connectionType>
+    <name>WSO2 Local Connection </name>
+    <fileLockScheme>Local</fileLockScheme>
+    <workingDir>Users/dilanperera/Downloads/</workingDir>
+  </file.init>
+</localEntry>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/usersbycsv" name="usersbycsv" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/">
+        <inSequence>
+            <payloadFactory media-type="text" template-type="default">
+                <format>$1</format>
+                <args>
+                    <arg expression="fn:string($body)" evaluator="xml" />
+                </args>
+            </payloadFactory>
+            <CSV.csvToJson>
+                <headerPresent>Present</headerPresent>
+                <csvEmptyValues>Null</csvEmptyValues>
+                <valueSeparator>,</valueSeparator>
+                <skipHeader>true</skipHeader>
+            </CSV.csvToJson>
+            <googleAds.uploadUserData configKey="WSO2 GoogleAds">
+                <dataSourceType>From a JSON array</dataSourceType>
+                <jsonArrayContent>{json-eval($)}</jsonArrayContent>
+                <operationType>create</operationType>
+                <userIdentifierSource>UNSPECIFIED</userIdentifierSource>
+                <customerId>3795013886</customerId>
+                <userListId>8895188292</userListId>
+            </googleAds.uploadUserData>
+            <respond />
+        </inSequence>
+        <faultSequence>
+        </faultSequence>
+    </resource>
+    <resource methods="GET" uri-template="/">
+        <inSequence>
+            <file.read configKey="WSO2 Local Connection ">
+                <encoding>UTF-8</encoding>
+                <enableStreaming>false</enableStreaming>
+                <enableLock>false</enableLock>
+                <maxRetries>0</maxRetries>
+                <retryDelay>0</retryDelay>
+                <includeResultTo>Message Body</includeResultTo>
+                <readMode>Complete File</readMode>
+                <path>sample2.txt</path>
+            </file.read>
+
+            <CSV.csvToJson>
+                <headerPresent>Present</headerPresent>
+                <csvEmptyValues>Empty</csvEmptyValues>
+            </CSV.csvToJson>
+            <googleAds.uploadUserData configKey="WSO2 GoogleAds">
+                <dataSourceType>From a JSON array</dataSourceType>
+                <jsonArrayContent>{json-eval($)}</jsonArrayContent>
+                <operationType>create</operationType>
+                <userIdentifierSource>UNSPECIFIED</userIdentifierSource>
+                <customerId>3795013886</customerId>
+                <userListId>8895188292</userListId>
+            </googleAds.uploadUserData>
+            <respond />
+        </inSequence>
+        <faultSequence>
+        </faultSequence>
+    </resource>
+</api>

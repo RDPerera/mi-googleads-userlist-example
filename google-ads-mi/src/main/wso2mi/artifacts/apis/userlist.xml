@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/userlist" name="userlist" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/">
+        <inSequence>
+            <payloadFactory media-type="json" template-type="default">
+                <format>[{"create": {"name": "$1","description": " $2","membershipLifeSpan": 30, "crmBasedUserList":
+                    {"uploadKeyType": "CONTACT_INFO","dataSourceType": "FIRST_PARTY"}}}]</format>
+                <args>
+                    <arg expression="json-eval($.name)" evaluator="json" />
+                    <arg expression="json-eval($.description)" evaluator="json" />
+                </args>
+            </payloadFactory>
+            <googleAds.userListsMutate configKey="WSO2 GoogleAds">
+                <customerId>3795013886</customerId>
+                <operations>{json-eval($)}</operations>
+            </googleAds.userListsMutate>
+            <respond />
+        </inSequence>
+        <faultSequence>
+        </faultSequence>
+    </resource>
+    <resource methods="GET" uri-template="/">
+        <inSequence>
+            <googleAds.getUserLists configKey="WSO2 GoogleAds">
+                <customerId>3795013886</customerId>
+            </googleAds.getUserLists>
+            <respond />
+        </inSequence>
+        <faultSequence>
+        </faultSequence>
+    </resource>
+    <resource methods="DELETE" uri-template="/">
+        <inSequence>
+            <payloadFactory media-type="json" template-type="default">
+                <format>[{"remove": "customers/$1/userLists/$2"}]</format>
+                <args>
+                    <arg expression="json-eval($.cusid)" evaluator="json" />
+                    <arg expression="json-eval($.id)" evaluator="json" />
+                </args>
+            </payloadFactory>
+            <googleAds.userListsMutate configKey="WSO2 GoogleAds">
+                <customerId>3795013886</customerId>
+                <operations>{json-eval($)}</operations>
+            </googleAds.userListsMutate>
+            <respond />
+        </inSequence>
+        <faultSequence>
+        </faultSequence>
+    </resource>
+</api>

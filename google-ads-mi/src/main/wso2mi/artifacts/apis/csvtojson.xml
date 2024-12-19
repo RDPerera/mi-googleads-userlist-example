@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/csvtojson" name="csvtojson" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/">
+        <inSequence>
+            <payloadFactory media-type="text" template-type="default">
+                <format>$1</format>
+                <args>
+                    <arg expression="fn:string($body)" evaluator="xml" />
+                </args>
+            </payloadFactory>
+            <CSV.csvToJson>
+                <headerPresent>Present</headerPresent>
+                <csvEmptyValues>Empty</csvEmptyValues>
+                <valueSeparator>,</valueSeparator>
+                <skipHeader>true</skipHeader>
+            </CSV.csvToJson>
+            <respond />
+        </inSequence>
+        <faultSequence>
+        </faultSequence>
+    </resource>
+</api>

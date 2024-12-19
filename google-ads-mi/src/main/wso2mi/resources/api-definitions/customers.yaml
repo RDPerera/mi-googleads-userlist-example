@@ -1,0 +1,13 @@
+openapi: 3.0.1
+info:
+  title: customers
+  description: API Definition of customers
+  version: 1.0.0
+servers:
+- url: http://localhost:8290/customers
+paths:
+  /:
+    get:
+      responses:
+        default:
+          description: Default response

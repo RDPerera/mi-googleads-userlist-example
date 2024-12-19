@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localEntry key="WSO2 GoogleAds" xmlns="http://ws.apache.org/ns/synapse">
+  <googleAds.init>
+    <connectionType>googleAds</connectionType>
+    <name>WSO2 GoogleAds</name>
+    <base>https://googleads.googleapis.com</base>
+    <tokenEndpoint>https://www.googleapis.com/oauth2/v3/token</tokenEndpoint>
+    <clientId>sample.apps.googleusercontent.com</clientId>
+    <clientSecret>sample</clientSecret>
+    <refreshToken>sample</refreshToken>
+    <developerToken>sample</developerToken>
+    <loginCustomerId>sample</loginCustomerId>
+  </googleAds.init>
+</localEntry>
