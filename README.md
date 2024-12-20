@@ -1,1 +1,1 @@
-# mi-googleads-userlist-example
+MI GoogleAds Connector Sample
