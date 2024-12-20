@@ -4,7 +4,7 @@
     <resource methods="POST" uri-template="/">
         <inSequence>
             <googleAds.uploadUserData configKey="WSO2 GoogleAds">
-                <dataSourceType>From a JSON array</dataSourceType>
+                <inputStructure>JSON_ARRAY</inputStructure>
                 <jsonArrayContent>{json-eval($.userList)}</jsonArrayContent>
                 <operationType>create</operationType>
                 <userIdentifierSource>UNSPECIFIED</userIdentifierSource>
@@ -19,7 +19,7 @@
     <resource methods="DELETE" uri-template="/">
         <inSequence>
             <googleAds.uploadUserData configKey="WSO2 GoogleAds">
-                <dataSourceType>From a JSON array</dataSourceType>
+                <inputStructure>JSON_ARRAY</inputStructure>
                 <jsonArrayContent>{json-eval($.userList)}</jsonArrayContent>
                 <operationType>remove</operationType>
                 <userIdentifierSource>UNSPECIFIED</userIdentifierSource>
